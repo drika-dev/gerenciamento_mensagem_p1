@@ -1,0 +1,14 @@
+.footer {
+    padding-top: 5px;
+    background: #E6E6FA;
+    border-radius: 4px;
+    width: 900px;
+    padding: 50px 100px;
+    border: 2px solid black;
+    box-shadow: 15px 15px 1px #4F4F4F, 15px 15px 1px 2px black;
+    font-family: "Fjalla One";
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+  }
+  
