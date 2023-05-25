@@ -1,6 +1,6 @@
 import styles from "./Cadastro.module.css"
 import { useState } from "react";
-import { useInsertDocument } from "../../hooks/userRegister"
+import { useInsertUser } from "../../hooks/userRegister"
 
 const Cadastro = () => {
     const [displayName, setDisplayName] = useState("");
@@ -10,7 +10,7 @@ const Cadastro = () => {
 
     /*const navigate = useNavigate();
 
-    */const { insertDocument, response } = useInsertDocument("registercontacts");
+    */const { insertUser, response } = useInsertUser("registercontacts");
     const handleSubmit = (e) => {
         e.preventDefault();
         setFormError("");
@@ -46,8 +46,8 @@ const Cadastro = () => {
             <form onSubmit={handleSubmit}>
                 <input placeholder="Nome" required="" type="text" name="displayName" onChange={(e) => setDisplayName(e.target.value)} value={displayName} />
                 <input type="email" name="email" required placeholder="E-mail do usuário" onChange={(e) => setEmail(e.target.value)} value={email} />
-                <input type="tel" name="telefone" required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="Telefone" onChange={(e) => setTelefone(e.target.value)} value={telefone} />
-                {!response.loading && <button className="btn">Criar post!</button>}
+                <input type="tel" name="telefone" required placeholder="Telefone" onChange={(e) => setTelefone(e.target.value)} value={telefone} />
+                {!response.loading && <button className="btn">Enviar Contato!</button>}
                 {response.loading && (
                     <button className="btn" disabled>
                         Aguarde.. .

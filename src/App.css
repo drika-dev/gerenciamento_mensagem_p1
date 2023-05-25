@@ -5,12 +5,13 @@
 }
 
 body {
-  background-image: url('../public/background.jpg');
+  /*background-image: url("../public/background.jpg");*/
+  background-color: purple;
   background-size: cover;
   width: 100vw;
   height: 100vh;
+  display: grid;
   align-items: center;
-  padding-left: 19%;
   justify-items: center;
   border-radius: 20px;
 }
@@ -18,10 +19,9 @@ body {
 .contact-us {
   background: #E6E6FA;
   border-radius: 4px;
-  width: 900px;
   padding: 50px 100px;
   border: 2px solid black;
-  box-shadow: 15px 15px 1px #4F4F4F, 15px 15px 1px 2px black;
+  box-shadow: 15px 15px 1px #AB82FF, 15px 15px 1px 2px black;
 }
 
 input {
@@ -33,7 +33,7 @@ input {
   margin-bottom: 28pt;
   border: none;
   border-bottom: 5px solid black;
-  background: #4F4F4F;
+  background: #E6E6FA;
   min-width: 250px;
   padding-left: 5px;
   outline: none;
@@ -41,7 +41,7 @@ input {
 }
 
 input:focus {
-  border-bottom: 5px solid darkcyan ;
+  border-bottom: 5px solid #AB82FF;
 }
 
 button {
@@ -49,7 +49,7 @@ button {
   margin: 0 auto;
   line-height: 28pt;
   padding: 0 20px;
-  background: #4F4F4F;
+  background: #AB82FF;
   letter-spacing: 2px;
   transition: 0.2s all ease-in-out;
   outline: none;
@@ -63,7 +63,7 @@ button:hover {
 }
 
 ::selection {
-  background: black;
+  background: #ffc8ff;
 }
 
 input:-webkit-autofill,
@@ -73,7 +73,4 @@ input:-webkit-autofill:focus {
   -webkit-text-fill-color: #2A293E;
   -webkit-box-shadow: 0 0 0px 1000px #E6E6FA inset;
   transition: background-color 5000s ease-in-out 0s;
-}
-h2{
-  color: grey;
 }

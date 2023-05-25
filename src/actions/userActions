@@ -1,0 +1,10 @@
+// actions/userActions.js
+
+export const INSERT_USER = "INSERT_USER";
+
+export const insertUserAction = (userData) => {
+  return {
+    type: INSERT_USER,
+    payload: userData,
+  };
+};
