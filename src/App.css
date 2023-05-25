@@ -5,8 +5,8 @@
 }
 
 body {
-  /*background-image: url("../public/background.jpg");*/
-  background-color: purple;
+  background-image: url("../public/background.jpg");
+  background-color: white;
   background-size: cover;
   width: 100vw;
   height: 100vh;
@@ -17,11 +17,15 @@ body {
 }
 
 .contact-us {
+  margin-top: 20px;;
   background: #E6E6FA;
   border-radius: 4px;
   padding: 50px 100px;
   border: 2px solid black;
-  box-shadow: 15px 15px 1px #AB82FF, 15px 15px 1px 2px black;
+  box-shadow: 15px 15px 1px #4F4F4F, 15px 15px 1px 2px black;
+  width: 800px;
+  margin-bottom: 20px;
+  margin-left: 125px;
 }
 
 input {
