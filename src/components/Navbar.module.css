@@ -11,34 +11,22 @@
     padding: 10px 100px;
     border: 2px solid black;
     border-radius: 4px;
-    list-style: none;
     font-family: "Fjalla One";
-    margin-left: 125px;
+    margin-left: 100px;
+    margin-top: 0px;
 }
-
-.brand {
-    font-size: 1.2em;
-}
-
-.brand span {
-    font-weight: 900;
-    text-transform: uppercase;
-}
-
-.links_list {
-    display: flex;
+li{
     list-style: none;
 }
-
-.links_list li {
-    margin-right: 1em;
+.NavLink{
+    text-decoration: none;
+    color: black;
 }
+.tituloLAMIA{
+    text-decoration: none;
+    color: black;
 
-.links_list li a {
-    padding: 0.4em 0.6em;
-}
-
-.active {
-    background-color: #000;
-    color: #fff;
+    font-size: 36px;
+    margin-bottom: 0px;
+    font-weight: bolder;
 }
