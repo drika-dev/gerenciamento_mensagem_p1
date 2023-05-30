@@ -28,11 +28,10 @@ const Navbar = () => {
             {user && (<>
                 <li> <NavLink to="/NewMessage" className={styles.NavLink} >Nova mensagem</NavLink> </li>
                 <li> <NavLink to="/Dashboard" className={styles.NavLink} > Dashboard </NavLink> </li>
-            </>            
+            </>
             )}
-             {user && ( <li> <button onClick={logout}>Sair</button> </li>)}
-
-
+            {user && (<li> <NavLink onClick={logout} className={styles.NavLink} >Sair</NavLink> </li>)}
+            
         </ul>
     </nav>
 };

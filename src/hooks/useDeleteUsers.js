@@ -20,7 +20,7 @@ const deleteReducer = (state, action) => {
   }
 };
 
-export const useDeleteDocument = (docCollection) => {
+export const useDeleteUsers = (docCollection) => {
   const [response, dispatch] = useReducer(deleteReducer, initialState);
 
   // deal with memory leak
@@ -32,15 +32,15 @@ export const useDeleteDocument = (docCollection) => {
     }
   };
 
-  const deleteDocument = async (id) => {
+  const deleteUser = async (id) => {
     checkCancelBeforeDispatch({ type: "LOADING" });
 
     try {
-      const deletedDocument = await deleteDoc(doc(db, docCollection, id));
+      const deletedUser = await deleteDoc(doc(db, docCollection, id));
 
       checkCancelBeforeDispatch({
         type: "DELETED_DOC",
-        payload: deletedDocument,
+        payload: deletedUser,
       });
     } catch (error) {
       checkCancelBeforeDispatch({ type: "ERROR", payload: error.message });
@@ -51,5 +51,5 @@ export const useDeleteDocument = (docCollection) => {
     return () => setCancelled(true);
   }, []);
 
-  return { deleteDocument, response };
+  return { deleteUser, response };
 };

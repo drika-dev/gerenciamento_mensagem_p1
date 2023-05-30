@@ -1,49 +1,70 @@
-import styles from "./Dashboard.module.css"
+import styles from "./Dashboard.module.css";
+
 import { Link } from "react-router-dom";
 
 import { useAuthValue } from "../../Context/AuthContext";
-import { useFetchDocument } from "../../hooks/useFetchDocument";
-import { useDeleteDocument } from "../../hooks/useDeleteDocument";
+import { useFetchUsers } from "../../hooks/useFetchUsers";
+import { useDeleteUsers } from "../../hooks/useDeleteUsers";
 
 const Dashboard = () => {
-    const { user } = useAuthValue();
+  const { user } = useAuthValue();
+  const uid = user.uid;
 
-    const { users: usuarios } = useFetchDocument("registercontacts", null);
+  const { users: us } = useFetchUsers("registercontacts", null, uid);
 
-    const { deleteDocument } = useDeleteDocument("registercontacts");
-    console.log(usuarios);
+  const { deleteDocument } = useDeleteUsers("registercontacts");
 
-    return (
-        <div className="contact-us">
-            <h2>Dashboard</h2>
-            <p>Gerencie os usuários cadastrados</p>
-            <div className={styles.post_header}>
-                <span>Nome</span>
-                <span>Email</span>
-                <span>Telefone</span>
-            </div>
-            {usuarios &&
-                usuarios.map((post) => (
-                    <div className={styles.post_row} key={post.id}>
-                        <p>{post.displayName}</p>
-                        <div className={styles.actions}>
-                            <Link to={`/posts/${post.id}`} className="btn btn-outline">
-                                Ver
-                            </Link>
-                            <Link to={`/posts/edit/${post.id}`} className="btn btn-outline">
-                                Editar
-                            </Link>
-                            <button
-                                onClick={() => deleteDocument(post.id)}
-                                className="btn btn-outline btn-danger"
-                            >
-                                Excluir
-                            </button>
-                        </div>
-                    </div>
-                ))}
+  console.log(uid);
+  console.log(us);
+
+  return (
+    <div className="contact-us">
+      <h1>Dashboard</h1>
+      <h3>Gerencie os contatos cadastrados</h3>
+      <br />
+      <br />
+      <br />
+      {us && us.length === 0 ? (
+        <div className={styles.nousers}>
+          <p>Não foram encontrados cadastros</p>
         </div>
-    );
+      ) : (
+        <div className={styles.users_header}>
+          <div>
+            <span>Nome</span>
+          </div>
+          <div>
+            <span>Email</span>
+          </div>
+          <div>
+            <span>Telefone</span>
+          </div>
+          <div>
+            <span>Ações</span>
+          </div>
+        </div>
+      )}
+
+      {us &&
+        us.map((user) => (
+          <div className={styles.users_row} key={user.id}>
+            <div>
+              <span>{user.displayName}</span>
+            </div>
+            <div>
+              <span>{user.email}</span>
+            </div>
+            <div>
+              <span>{user.telefone}</span>
+            </div>
+
+            <div className={styles.actions}>
+              <Link onClick={() => deleteDocument(user.id)}>Excluir</Link>
+            </div>
+          </div>
+        ))}
+    </div>
+  );
 };
 
 export default Dashboard;
