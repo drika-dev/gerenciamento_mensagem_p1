@@ -18,7 +18,7 @@ const Dashboard = () => {
   console.log(us);
 
   return (
-    <div className="contact-us">
+    <div className="body-us">
       <h1>Dashboard</h1>
       <h3>Gerencie os contatos cadastrados</h3>
       <br />

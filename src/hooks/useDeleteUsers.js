@@ -11,7 +11,7 @@ const deleteReducer = (state, action) => {
   switch (action.type) {
     case "LOADING":
       return { loading: true, error: null };
-    case "DELETED_DOC":
+    case "DELETED_USER":
       return { loading: false, error: null };
     case "ERROR":
       return { loading: false, error: action.payload };
@@ -20,10 +20,9 @@ const deleteReducer = (state, action) => {
   }
 };
 
-export const useDeleteUsers = (docCollection) => {
+export const useDeleteUsers = (userCollection) => {
   const [response, dispatch] = useReducer(deleteReducer, initialState);
 
-  // deal with memory leak
   const [cancelled, setCancelled] = useState(false);
 
   const checkCancelBeforeDispatch = (action) => {
@@ -36,10 +35,10 @@ export const useDeleteUsers = (docCollection) => {
     checkCancelBeforeDispatch({ type: "LOADING" });
 
     try {
-      const deletedUser = await deleteDoc(doc(db, docCollection, id));
+      const deletedUser = await deleteDoc(doc(db, userCollection, id));
 
       checkCancelBeforeDispatch({
-        type: "DELETED_DOC",
+        type: "DELETED_USER",
         payload: deletedUser,
       });
     } catch (error) {
@@ -50,6 +49,5 @@ export const useDeleteUsers = (docCollection) => {
   useEffect(() => {
     return () => setCancelled(true);
   }, []);
-
   return { deleteUser, response };
 };

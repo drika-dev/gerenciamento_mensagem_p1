@@ -1,6 +1,13 @@
 import { useState, useEffect, useReducer } from "react";
 import { db } from "../firebase/config";
-import { collection, addDoc, Timestamp, query, where, getDocs } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  Timestamp,
+  query,
+  where,
+  getDocs,
+} from "firebase/firestore";
 
 const initialState = {
   loading: null,
@@ -23,7 +30,7 @@ const insertReducer = (state, action) => {
   }
 };
 
-export const useInsertUser = (docCollection) => {
+export const useInsertUser = (userCollection) => {
   const [response, dispatch] = useReducer(insertReducer, initialState);
 
   // deal with memory leak
@@ -37,11 +44,17 @@ export const useInsertUser = (docCollection) => {
 
   const checkDuplicateUser = async (email, phone) => {
     try {
-      const emailQuery = query(collection(db, docCollection), where("email", "==", email));
+      const emailQuery = query(
+        collection(db, userCollection),
+        where("email", "==", email)
+      );
       const emailDocs = await getDocs(emailQuery);
       const emailExists = !emailDocs.empty;
 
-      const phoneQuery = query(collection(db, docCollection), where("phone", "==", phone));
+      const phoneQuery = query(
+        collection(db, userCollection),
+        where("phone", "==", phone)
+      );
       const phoneDocs = await getDocs(phoneQuery);
       const phoneExists = !phoneDocs.empty;
 
@@ -58,7 +71,7 @@ export const useInsertUser = (docCollection) => {
       const newUser = { ...usuers, createdAt: Timestamp.now() };
 
       const inserterdUsers = await addDoc(
-        collection(db, docCollection),
+        collection(db, userCollection),
         newUser
       );
 

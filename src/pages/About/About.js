@@ -1,7 +1,7 @@
 import styles from "./About.module.css";
 const About = () => {
   return (
-    <div className="contact-us">
+    <div className="body-us">
       <h2> Sobre</h2>
       <br />
       <div className={styles.paragrafo}>

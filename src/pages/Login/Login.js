@@ -33,7 +33,7 @@ const Login = () => {
 
     return (
         <div>
-            <form class="contact-us" onSubmit={handleSubmit}>
+            <form class="body-us" onSubmit={handleSubmit}>
                 <title> <h1>Login</h1>  </title>
                 <input type="email" name="email" required placeholder="E-mail do usuário" onChange={(e) => setEmail(e.target.value)} value={email}
           />

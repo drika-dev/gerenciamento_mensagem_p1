@@ -28,7 +28,7 @@ const Cadastro = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit} className="contact-us">
+      <form onSubmit={handleSubmit} className="body-us">
         <h2>
           {" "}
           Cadastre seu contato para receber

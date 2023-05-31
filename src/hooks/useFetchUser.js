@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { db } from "../firebase/config";
 import { doc, getDoc } from "firebase/firestore";
 
-export const useFetchDocument = (docCollection, id) => {
+export const useFetchUser = (userCollection, id) => {
   const [users, setUsers] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(null);
@@ -12,10 +12,10 @@ export const useFetchDocument = (docCollection, id) => {
       setLoading(true);
 
       try {
-        const docRef = await doc(db, docCollection, id);
-        const docSnap = await getDoc(docRef);
+        const usRef = await us(db, userCollection, id);
+        const usSnap = await getDoc(usRef);
 
-        setUsers(docSnap.data());
+        setUsers(usSnap.data());
       } catch (error) {
         console.log(error);
         setError(error.message);
@@ -25,7 +25,7 @@ export const useFetchDocument = (docCollection, id) => {
     };
 
     loadUsers();
-  }, [docCollection, id]);
+  }, [userCollection, id]);
 
   console.log(users);
 
