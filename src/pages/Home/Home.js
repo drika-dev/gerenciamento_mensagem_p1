@@ -2,7 +2,7 @@ import styles from "./Home.module.css";
 
 const Home = () => {
   return (
-    <div className="contact-us">
+    <div className="body-us">
       <main className={styles.paragrafo}>
         <section>
           <h1>Bem-vindo à LAMIA</h1>

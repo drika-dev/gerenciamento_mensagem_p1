@@ -8,6 +8,7 @@ const Cadastro = () => {
   const [email, setEmail] = useState("");
   const [telefone, setTelefone] = useState("");
   const [formError, setFormError] = useState("");
+  const [cadastroEfetuado, setCadastroEfetuado] = useState(false);
 
   const navigate = useNavigate();
 
@@ -22,8 +23,7 @@ const Cadastro = () => {
       telefone,
     });
 
-    // redirect to home page
-    navigate("/");
+   /* setCadastroEfetuado(true);*/
   };
 
   return (
@@ -71,6 +71,14 @@ const Cadastro = () => {
         {(response.error || formError) && (
           <p className="error">{response.error || formError}</p>
         )}
+        {(response.duplicateUser || formError) && (
+          <p className="error">Cadastro duplicado</p>
+        )}
+        {cadastroEfetuado && (
+        <div className={styles.popup}>
+          <p>Cadastro efetuado com sucesso!</p>
+        </div>
+      )}
       </form>
     </div>
   );

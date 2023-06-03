@@ -65,23 +65,29 @@ export const useInsertUser = (userCollection) => {
   };
 
   const insertUser = async (usuers) => {
+    const { email, telefone } = usuers;
     checkCancelBeforeDispatch({ type: "LOADING" });
+    const isDuplicateUser = await checkDuplicateUser(email, telefone);
+    if (isDuplicateUser) {
+      checkCancelBeforeDispatch({ type: "DUPLICATE_USER" });
+    } else {
+      try {
+        const newUser = { ...usuers, createdAt: Timestamp.now() };
 
-    try {
-      const newUser = { ...usuers, createdAt: Timestamp.now() };
+        const inserterdUsers = await addDoc(
+          collection(db, userCollection),
+          newUser
+        );
 
-      const inserterdUsers = await addDoc(
-        collection(db, userCollection),
-        newUser
-      );
-
-      checkCancelBeforeDispatch({
-        type: "INSERTED_DOC",
-        payload: inserterdUsers,
-      });
-    } catch (error) {
-      checkCancelBeforeDispatch({ type: "ERROR", payload: error.message });
+        checkCancelBeforeDispatch({
+          type: "INSERTED_DOC",
+          payload: inserterdUsers,
+        });
+      } catch (error) {
+        checkCancelBeforeDispatch({ type: "ERROR", payload: error.message });
+      }
     }
+
   };
   useEffect(() => {
     return () => setCancelled(true);

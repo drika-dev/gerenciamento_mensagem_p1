@@ -11,7 +11,7 @@ const updateReducer = (state, action) => {
   switch (action.type) {
     case "LOADING":
       return { loading: true, error: null };
-    case "UPDATED_DOC":
+    case "UPDATED_US":
       return { loading: false, error: null };
     case "ERROR":
       return { loading: false, error: action.payload };
@@ -45,7 +45,7 @@ export const useUpdateUser = (usCollection) => {
       console.log(updateUser);
 
       checkCancelBeforeDispatch({
-        type: "UPDATED_DOC",
+        type: "UPDATED_US",
         payload: updateUser,
       });
     } catch (error) {

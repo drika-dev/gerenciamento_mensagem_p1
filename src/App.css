@@ -18,12 +18,12 @@ body {
 }
 
 .body-us {
-  margin-top: 2%;;
-  background: #E6E6FA;
+  margin-top: 2%;
+  background: #e6e6fa;
   border-radius: 4px;
   padding: 50px 100px;
   border: 2px solid black;
-  box-shadow: 15px 15px 1px #4F4F4F, 15px 15px 1px 2px black;
+  box-shadow: 15px 15px 1px #4f4f4f, 15px 15px 1px 2px black;
   width: 800px;
   margin-bottom: 2%;
   margin-left: 100px;
@@ -40,7 +40,7 @@ input {
   margin-bottom: 28pt;
   border: none;
   border-bottom: 5px solid black;
-  background: #E6E6FA;
+  background: #e6e6fa;
   min-width: 250px;
   padding-left: 5px;
   outline: none;
@@ -71,18 +71,18 @@ button:hover {
 }
 
 ::selection {
-  background: #ffc8ff;
+  background: slategray;
 }
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus {
   border-bottom: 5px solid black;
-  -webkit-text-fill-color: #2A293E;
-  -webkit-box-shadow: 0 0 0px 1000px #E6E6FA inset;
+  -webkit-text-fill-color: #2a293e;
+  -webkit-box-shadow: 0 0 0px 1000px #e6e6fa inset;
   transition: background-color 5000s ease-in-out 0s;
 }
-h2{
+h2 {
   align-items: center;
   text-align: center;
 }
